@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import  logo  from "../../assets/images/argentBankLogo.png";
 
 export const Header = () => {
   return (
@@ -6,7 +7,7 @@ export const Header = () => {
     <Link className="main-nav-logo" to="/">
       <img
         className="main-nav-logo-image"
-        src="./public/argentBankLogo.png"
+        src={logo}
         alt="Argent Bank Logo"
       />
       <h1 className="sr-only">Argent Bank</h1>

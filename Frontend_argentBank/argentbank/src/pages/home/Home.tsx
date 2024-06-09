@@ -1,16 +1,10 @@
 import chatIcon from '../../assets/images/icon-chat.png';
+import { Hero } from '../../components/Hero/Hero';
 
 export const Home = () => {
   return (
     <main>
-      <div className="hero">
-        <section className="hero-content">
-          <h2 className="sr-only">Promoted Content</h2>
-          <p className="subtitle">No minimum deposit.</p>
-          <p className="subtitle">High interest rates.</p>
-          <p className="text">Open a savings account with Argent Bank today!</p>
-        </section>
-      </div>
+      <Hero />
       <section className="features">
         <h2 className="sr-only">Features</h2>
         <div className="feature-item">
@@ -23,7 +17,7 @@ export const Home = () => {
         </div>
         <div className="feature-item">
           <img
-            src="./img/icon-money.png"
+            src={chatIcon}
             alt="Chat Icon"
             className="feature-icon"
           />
@@ -34,7 +28,7 @@ export const Home = () => {
         </div>
         <div className="feature-item">
           <img
-            src="./img/icon-security.png"
+            src={chatIcon}
             alt="Chat Icon"
             className="feature-icon"
           />
