@@ -10,7 +10,9 @@ export const Button  = ({title, className, path}) => {
 
 
     return (
-        <button className={className} onClick={handleClick}>{title}</button>
+        <>
+            <button className={className} onClick={handleClick}>{title}</button>
+        </>
     )
 
 }

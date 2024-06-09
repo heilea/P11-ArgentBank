@@ -2,12 +2,12 @@ import React from 'react';
 
 
 export interface FieldProps {
-  fieldType:number,
-  label:string,
-  name:string,
-  placeholder:string,
-  id?:string,
-  testId:string,
+  fieldType: number,
+  label: string,
+  name: string,
+  placeholder: string,
+  id?: string,
+
 }
 
 const FIELD_TYPE = {
@@ -17,10 +17,10 @@ const FIELD_TYPE = {
   PASSWORD: 4 // Champ de mot de passe
 };
 
-export const Field:React.FC<FieldProps> = ({fieldType = FIELD_TYPE.INPUT_TEXT, label, name, placeholder, id, testId}) => {
+export const Field: React.FC<FieldProps> = ({ fieldType = FIELD_TYPE.INPUT_TEXT, label, name, placeholder, id }) => {
   let component;
 
-  switch (fieldType){
+  switch (fieldType) {
     case FIELD_TYPE.INPUT_TEXT:
       // Champ de texte
       component = (
@@ -31,14 +31,14 @@ export const Field:React.FC<FieldProps> = ({fieldType = FIELD_TYPE.INPUT_TEXT, l
             type="text"
             name={name}
             placeholder={placeholder}
-            data-testid= {testId} // "field-testid"
-          />          
+
+          />
         </div>
       );
       break;
     case FIELD_TYPE.PASSWORD:
-       // Champ de mot de passe
-       component = (
+      // Champ de mot de passe
+      component = (
         <div>
           <label htmlFor={id}>{label}</label>
           <input
@@ -46,8 +46,8 @@ export const Field:React.FC<FieldProps> = ({fieldType = FIELD_TYPE.INPUT_TEXT, l
             type="password"
             name={name}
             placeholder={placeholder}
-            data-testid={testId}
-          />            
+
+          />
         </div>
       );
       break;
@@ -56,7 +56,7 @@ export const Field:React.FC<FieldProps> = ({fieldType = FIELD_TYPE.INPUT_TEXT, l
       component = (
         <div>
           <label htmlFor={id}>{label}</label>
-          <textarea name={name} data-testid={testId} />;
+          <textarea name={name} />;
         </div>
       )
       break;
@@ -64,17 +64,17 @@ export const Field:React.FC<FieldProps> = ({fieldType = FIELD_TYPE.INPUT_TEXT, l
       // Case à cocher
       component = (
         <div>
-          <input 
-            type="checkbox" 
-            id={id} 
-            data-testid={testId} 
+          <input
+            type="checkbox"
+            id={id}
+
           />
           <label htmlFor={id}>{label}</label>
         </div>
       );
-      break; 
-      default:
-        // Par défaut, un champ de texte est affiché
+      break;
+    default:
+      // Par défaut, un champ de texte est affiché
       component = (
         <div>
           <label htmlFor={id}>{label}</label>
@@ -83,15 +83,15 @@ export const Field:React.FC<FieldProps> = ({fieldType = FIELD_TYPE.INPUT_TEXT, l
             type="text"
             name={name}
             placeholder={placeholder}
-            data-testid={testId}
-          />          
+
+          />
         </div>
-      ); 
+      );
   }
   return (
-    <div>
+    <>
       {component}
-    </div>
+    </>
   );
 };
 
