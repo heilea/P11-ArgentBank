@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Home } from './pages/home/Home'
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
-import { Error } from './components/Error'
+import { Header } from './components/Header/Header'
+import { Footer } from './components/Footer/Footer'
+import { Error } from './components/Error/Error'
 import { SignIn } from './pages/signIn/SignIn'
 import { User } from "./pages/user/User"
 import { Profile } from './pages/profile/Profile'
