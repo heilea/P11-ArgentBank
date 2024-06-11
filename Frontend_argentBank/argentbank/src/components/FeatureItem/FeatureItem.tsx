@@ -3,7 +3,6 @@ import { Image } from "../Image/Image";
 
 
 export interface FeatureProps {
-  key:string,
   title:string,
   description:string,
 }
