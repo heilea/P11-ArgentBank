@@ -10,8 +10,11 @@ import { SignIn } from './pages/signIn/SignIn'
 import { User } from "./pages/user/User"
 import { Profile } from './pages/profile/Profile'
 
+import { Provider } from 'react-redux'
+import { store } from './app/store';
 
 import "./assets/main.css"
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
@@ -19,6 +22,7 @@ const root = ReactDOM.createRoot(document.getElementById('root')!)
 
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <Router>
       <Header />
       <Routes>
@@ -30,5 +34,6 @@ root.render(
       </Routes>
       <Footer />
     </Router>
+    </Provider>
   </React.StrictMode>,
 )
