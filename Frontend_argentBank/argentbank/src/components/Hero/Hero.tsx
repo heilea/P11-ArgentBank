@@ -9,7 +9,7 @@ export const Hero: React.FC = () => {
 
     return (
        <>
-         <div style={heroStyle} className='hero' data-testid="hero-image-testid">
+         <div style={heroStyle} className='hero'>
              <section className="hero-content">
                  <h2 className="sr-only">Promoted Content</h2>
                  <p className="subtitle">No fees.</p>

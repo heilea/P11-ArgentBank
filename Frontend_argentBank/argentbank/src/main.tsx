@@ -2,13 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { Home } from './pages/home/Home'
-import { Header } from './components/Header/Header'
-import { Footer } from './components/Footer/Footer'
-import { Error } from './components/Error/Error'
-import { SignIn } from './pages/signIn/SignIn'
-import { User } from "./pages/user/User"
-import { Profile } from './pages/profile/Profile'
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+import { Error } from './pages/Error/Error';
+import { SignIn } from './pages/SignIn/SignIn';
+import { Profile } from './pages/Profile/Profile';
+import { Home } from './pages/Home/Home';
 
 import { Provider } from 'react-redux'
 import { store } from './app/store';
@@ -28,7 +27,6 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/user" element={<User />} />
         <Route path="/profil" element={<Profile />} />
         <Route path="*" element={<Error />} />
       </Routes>
