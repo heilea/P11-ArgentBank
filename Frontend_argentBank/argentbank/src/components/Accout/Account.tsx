@@ -1,7 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 
+type AccountProps = {
+	type:string,
+	number:string,
+	balance:string,
+	balanceDescription:string
+}
 
-export const Account = ({ type, number, balance, balanceDescription }) => {
+export const Account = ({ type, number, balance, balanceDescription}:AccountProps) => {
 	const navigate = useNavigate();
 
 	const redirectToErrorPage = () => {
