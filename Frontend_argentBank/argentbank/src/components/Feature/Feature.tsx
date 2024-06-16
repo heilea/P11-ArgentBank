@@ -1,12 +1,13 @@
 
-import chatIcon from '../../assets/images/icon-chat.png';
 
-interface FeatureProps {
+type FeatureProps = {
+  icon:string,
+  alt:string
   title:string,
   description:string
 }
 
-export const Feature: React.FC<FeatureProps> = ({ title, description }) => {
+export const Feature: React.FC<FeatureProps> = ({ icon, alt, title, description }) => {
   return (
     <>
       <section className="features-item">
@@ -14,8 +15,8 @@ export const Feature: React.FC<FeatureProps> = ({ title, description }) => {
 
         <figure>
           <img
-            src={chatIcon}
-            alt="Chat Icon"
+            src= {icon}
+            alt={alt}
             className="feature-icon"
           />
           <figcaption>

@@ -15,6 +15,8 @@ export const Home:React.FC = () => {
                 {featuresData.map((feature, index) => (
                     <Feature
                         key={index}
+                        icon={feature.icon}
+                        alt={feature.alt}
                         title={feature.title}
                         description={feature.description} />
                 ))}
