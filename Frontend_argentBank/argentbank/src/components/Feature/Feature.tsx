@@ -1,5 +1,6 @@
 
 
+
 type FeatureProps = {
   icon:string,
   alt:string
@@ -10,10 +11,8 @@ type FeatureProps = {
 export const Feature: React.FC<FeatureProps> = ({ icon, alt, title, description }) => {
   return (
     <>
-      <section className="features-item">
-        <h2 className="sr-only">Features</h2>
-
-        <figure>
+      
+        <figure className="feature-item">
           <img
             src= {icon}
             alt={alt}
@@ -25,7 +24,7 @@ export const Feature: React.FC<FeatureProps> = ({ icon, alt, title, description 
           </figcaption>
         </figure>
 
-      </section>
+      
     </>
   )
 }
