@@ -1,7 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logIn, logOut, getProfile, editUsername } from '../user.actions/actions';
 
-const initialState = {
+export type UserState = {
+  firstName: string,
+  lastName:string,
+  username:string
+}
+
+export type AuthState = {
+  isAuthenticated:boolean,
+  user: UserState,
+  token: null | string,
+  error: null | string
+}
+export const initialState = {
   isAuthenticated: false,
   user: {
     firstName: "",
@@ -23,7 +35,7 @@ export const userSlice = createSlice({
         state.token = action.payload;
         state.error = null;
       })
-      .addCase(logIn.rejected, (state, action) => {
+      .addCase(logIn.rejected, (state, action:any) => {
         state.error = action.payload;
       })
       .addCase(logOut.fulfilled, (state) => {
