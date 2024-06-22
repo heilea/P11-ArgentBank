@@ -7,3 +7,5 @@ export const store = configureStore({
       auth: userSlice.reducer,
     }
   })
+
+  export type AppDispatch = typeof store.dispatch;

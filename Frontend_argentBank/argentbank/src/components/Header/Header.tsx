@@ -37,7 +37,7 @@ export const Header:React.FC = () => {
                             </NavLink>
                         </>
                     ) : (
-                        <NavLink to='/login'>
+                        <NavLink to='/signin'>
                             <i className='fa fa-user-circle'></i>
                             Sign In
                         </NavLink>

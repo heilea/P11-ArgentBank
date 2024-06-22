@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const logIn = createAsyncThunk(
   'user/logIn',
-  async ({ email, password, rememberMe }, { rejectWithValue }) => {
+  async ({ email, password, rememberMe }: { email: string, password: string, rememberMe: boolean }, { rejectWithValue }) => {
     try {
 
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
@@ -32,7 +32,7 @@ export const logIn = createAsyncThunk(
 
     } catch (error) {
       console.error('Error:', error);
-      return rejectWithValue(error.message);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
@@ -46,7 +46,7 @@ export const logOut = createAsyncThunk(
 
       return null;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
@@ -75,14 +75,14 @@ export const getProfile = createAsyncThunk(
 
       return data.body;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
 
-export const editUsername= createAsyncThunk(
+export const editUsername = createAsyncThunk(
   'user/updateUserName',
-  async (userName, { rejectWithValue }) => {
+  async (newUserName: string, { rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'PUT',
@@ -90,7 +90,7 @@ export const editUsername= createAsyncThunk(
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: JSON.stringify({ userName }),
+        body: JSON.stringify({ userName: newUserName }),
       });
 
       if (!response.ok) {
@@ -98,10 +98,10 @@ export const editUsername= createAsyncThunk(
       }
 
       const data = await response.json();
-
+      console.log("Les data sont", data.body.userName)
       return data.body.userName;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
