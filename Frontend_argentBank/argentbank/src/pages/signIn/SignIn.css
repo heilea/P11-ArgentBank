@@ -5,10 +5,7 @@
     padding: 2rem;
     width: 300px;
     background-color: white;
-  
-    h2 {
-      font-size: 1.5em;
-    }
+ }
   
     fieldset {
       text-align: left;
@@ -34,8 +31,8 @@
       color: red;
       font-weight: italic;
     }
-  }
   
+
   .remember label {
     margin-left: 0.25rem;
   }
