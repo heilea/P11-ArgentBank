@@ -4,17 +4,30 @@ import {Account} from '../../components/Accout/Account';
 import accountData from '../../data/userData.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, editUsername } from '../../app/user.actions/actions';
+import { AppDispatch } from '../../app/store';
+
+//Interface pour typer le state
+export interface RootState {
+    auth: {
+      user: {
+        userName: string;
+        firstName: string;
+        lastName: string;
+      };
+    };
+  }
+
 
 export const Profile = () => {
-    const dispatch = useDispatch();
-    const userProfile = useSelector(state => state.auth.user);
+    const dispatch:AppDispatch = useDispatch();
+    const userProfile = useSelector((state: RootState) => state.auth.user);
 
     useEffect(() => {
         dispatch(getProfile());
     }, [dispatch]);
 
     //////////! Edit username
-    const [updateUsername, setupdateUsername] = useState(false);
+    const [updateUsername, setUpdateUsername] = useState(false);
     const [newUserName, setNewUserName] = useState('');
     const [initialUserName, setInitialUserName] = useState('');
 
@@ -29,10 +42,9 @@ export const Profile = () => {
     }, [userProfile]);
     
     const toggleEdit = () => {
-        setupdateUsername(!updateUsername);
-        if (!updateUsername) {
-            setNewUserName(userProfile.userName || '');
-        }
+        const newUpdateUsername = !updateUsername;
+        setUpdateUsername(newUpdateUsername);
+        setNewUserName(newUpdateUsername ? userProfile.userName || '' : newUserName);
     };
 
     const handleSave = () => {
@@ -43,16 +55,22 @@ export const Profile = () => {
     };
 
     const handleCancel = () => {
-        setNewUserName(initialUserName);
+        initialUserName
         toggleEdit();
     };
+    
+    useEffect(() => {
+        if (!updateUsername) {
+            toggleEdit();
+        }
+    }, [newUserName]);
 
     return (
         <main className='main bg-dark'>
 
             {!updateUsername ? (
                 <section className='header'>
-                    <h2>Welcome back<br />{userProfile && userProfile.firstName} {userProfile && userProfile.lastName} !</h2>
+                   <h2>Welcome back<br />{ newUserName } !</h2>
 
                     <button onClick={toggleEdit}>Edit Name</button>
                 </section>

@@ -3,15 +3,31 @@ import { useNavigate } from 'react-router-dom';
 import { logOut } from '../../app/user.actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Logo from "../../assets/images/argentBankLogo.png";
+import { RootState } from '../../pages/Profile/Profile';
+import { AppDispatch } from '../../app/store';
+
+interface AuthState {
+    user: {
+      userName: string;
+      firstName: string;
+      lastName: string;
+    };
+    isAuthenticated: boolean;
+  }
+  
+  interface AuthenticatedState {
+    auth: AuthState;
+  }
+
 
 export const Header:React.FC = () => {
    
-    const dispatch = useDispatch();
+    const dispatch:AppDispatch = useDispatch();
     const navigate = useNavigate();
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    const user = useSelector((state) => state.auth.user);
+    const isAuthenticated = useSelector((state:AuthenticatedState) => state.auth.isAuthenticated);
+    const user = useSelector((state:RootState) => state.auth.user);
   
-    const handlelogOut = (e) => {
+    const handlelogOut = (e:React.MouseEvent) => {
       e.preventDefault();
       dispatch(logOut());
       navigate('/');

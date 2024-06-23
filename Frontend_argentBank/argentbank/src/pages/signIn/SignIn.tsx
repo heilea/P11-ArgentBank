@@ -1,13 +1,17 @@
 
-
+import './SignIn.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../app/user.actions/actions';
 import { useNavigate } from 'react-router-dom';
+import { AuthState } from '../../app/user.slices/slice';
+import { AppDispatch } from '../../app/store';
 
-
+interface ErrorAuth {
+  auth: AuthState
+}
 export const SignIn = () => {
-  const dispatch = useDispatch();
+  const dispatch:AppDispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -16,10 +20,10 @@ export const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const loginError = useSelector(state => state.auth.error);
+  const loginError = useSelector((state:ErrorAuth) => state.auth.error);
 
-  const handlelogIn = async (e) => {
-    e.preventDefault();
+  const handlelogIn = async () => {
+ 
 
     if (!email || !password) {
       alert('Please fill in all fields');
@@ -38,12 +42,12 @@ export const SignIn = () => {
   };
 
   return (
-    <main className="bg-dark">
+    <main className=" main bg-dark">
       <section id='login'>
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h2>Sign In</h2>
         {loginError && <p>{loginError}</p>}
-        <form onSubmit={handlelogIn}>
+        <form onSubmit={()=>handlelogIn()}>
           <fieldset>
             <label htmlFor="username" className='sign'>Username</label>
             <input type="text" id="username" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} />

@@ -4,7 +4,7 @@ import { logIn, logOut, getProfile, editUsername } from '../user.actions/actions
 export type UserState = {
   firstName: string,
   lastName:string,
-  username:string
+  userName:string
 }
 
 export type AuthState = {
