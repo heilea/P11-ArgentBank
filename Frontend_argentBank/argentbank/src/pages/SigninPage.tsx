@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,9 +26,11 @@ export const SigninPage = () => {
     }
   };
 
-  if (isLoggedIn) {
-    navigate('/user');
-  }
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/user');
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className="SigninPage">
