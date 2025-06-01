@@ -20,7 +20,7 @@ Elle permet aux utilisateurs de se connecter, consulter leurs comptes, et gérer
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [React Router](https://reactrouter.com/)
-- [Redux Toolkit](https://redux-toolkit.js.org/) *(si utilisé)*
-- [Vite](https://vitejs.dev/) *(si utilisé pour le bundler)*
+- [Redux Toolkit](https://redux-toolkit.js.org/) 
+- [Vite](https://vitejs.dev/) 
 
 ---
